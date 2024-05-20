@@ -5,13 +5,17 @@ import Header from "./components/Header";
 import Body from "./components/Body";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
-import Home from "./components/Home";
+import Browse from "./components/Browse";
+import appStore from "./utils/appStore";
+import { Provider } from "react-redux";
 
 const App = () => {
   return (
     <>
-      <Header />
-      <Outlet />
+      <Provider store={appStore}>
+        <Header />
+        <Outlet />
+      </Provider>
     </>
   );
 };
@@ -34,8 +38,8 @@ const appRouter = createBrowserRouter([
         element: <SignUp />,
       },
       {
-        path: "/home",
-        element: <Home />,
+        path: "/browse",
+        element: <Browse />,
       },
     ],
   },

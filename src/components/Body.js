@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { BG_IMG } from "../utils/constants";
 
 const Body = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const Body = () => {
       <div className="relative">
         <img
           className="w-full h-screen object-cover"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/41c789f0-7df5-4219-94c6-c66fe500590a/3149e5eb-4660-4e3d-9e65-b1e615229c64/IN-en-20240513-popsignuptwoweeks-perspective_alpha_website_small.jpg"
+          src={BG_IMG}
           alt="homeImage"
         />
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
