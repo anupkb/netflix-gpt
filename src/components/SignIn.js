@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { validateLoginData } from "../utils/Validation";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app } from "../utils/firebase";
 
 const SignIn = () => {
+  const auth = getAuth();
   const [errorMessage, setErrorMessage] = useState(null);
   const [formData, setFormData] = useState({
     email: "",
@@ -19,6 +22,19 @@ const SignIn = () => {
 
     const message = validateLoginData(formData.email, formData.password);
     setErrorMessage(message);
+
+    if (message) return;
+
+    signInWithEmailAndPassword(auth, formData.email, formData.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(errorMessage);
+      });
   };
 
   return (

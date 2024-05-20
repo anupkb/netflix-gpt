@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { validateSignupData } from "../utils/Validation";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { app } from "../utils/firebase";
 
 const SignUp = () => {
+  const auth = getAuth();
   const [errorMessage, setErrorMessage] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -24,6 +27,19 @@ const SignUp = () => {
       formData.password
     );
     setErrorMessage(message);
+
+    if (message) return;
+
+    createUserWithEmailAndPassword(auth, formData.email, formData.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(errorMessage);
+      });
   };
 
   return (
