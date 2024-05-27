@@ -1,10 +1,16 @@
 import React from "react";
+import useNowPlayingMovies from "./hooks/useNowPlayingMovies";
+import MainContainer from "./MainContainer";
+import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
+  useNowPlayingMovies();
+
   return (
     <>
-      <div className="text-center text-red-600 text-2xl font-bold underline">
-        Netflix Home Page!
+      <div>
+        <MainContainer />
+        <SecondaryContainer />
       </div>
     </>
   );

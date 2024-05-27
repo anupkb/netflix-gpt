@@ -52,7 +52,7 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute top-0 left-0 right-0 z-10 flex justify-between items-center px-8 py-2 bg-gradient-to-b from-black">
+    <div className="absolute top-0 left-0 right-0 z-10 flex justify-between items-center px-8 py-2 bg-gradient-to-b from-black text-white">
       <div className="flex items-center space-x-4">
         <Link to="/">
           <img className="w-44" src={LOGO} alt="logo" />
